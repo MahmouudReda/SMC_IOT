@@ -43,6 +43,9 @@
   padding: 10px;
   margin-bottom: 10px;
 }
+ul li:not(:first-child) {
+        display: none;
+      }
 .document-container h2 {
   margin-top: 0;
 }
@@ -151,8 +154,8 @@ margin: 10px 0;
 <div id="container"></div>
 
     
-<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/8.6.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
 <script type="module">
 const firebaseConfig = {
     apiKey: "AIzaSyB-wwlc1M3GipYOoTsusYExlNW636CPkJ0",
@@ -170,13 +173,12 @@ const firebaseConfig = {
 
 
     const usersRef = db.collection('users');
-    const myCollection = db.collection("myCollection");
 
-   
+    
     
 
       // Set up a listener for document changes
-      myCollection.onSnapshot((querySnapshot) => {
+      usersRef.onSnapshot((querySnapshot) => {
         querySnapshot.docChanges().forEach((change) => {
           if (change.type === "added") {
             // Create a new div for the added document
