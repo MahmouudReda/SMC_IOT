@@ -15,6 +15,29 @@
         type = "image/x-icon">
         <title>SMC</title>
 </head>
+
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+    <script>
+      // Initialize Firebase
+      firebase.initializeApp({
+    apiKey: "AIzaSyB-wwlc1M3GipYOoTsusYExlNW636CPkJ0",
+    authDomain: "smc2023-aa4d4.firebaseapp.com",
+    projectId: "smc2023-aa4d4",
+    
+      });
+       function getNumDocuments(users) {
+        firebase.firestore().collection(users).get()
+          .then((querySnapshot) => {
+            const numDocuments = querySnapshot.size;
+            console.log(`The collection "${users}" has ${numDocuments} documents.`);
+          })
+          .catch((error) => {
+            console.error(`Error getting documents from "${users}": ${error}`);
+          });
+
+      }
+      </script>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -33,7 +56,78 @@
     </div>
   </div>
 </div>
+<style>
+  .containerr {
+			background-color: lightblue;
+			padding: 10px;
+			margin: 10px;
+			border-radius: 5px;
+			text-align: center;
+			font-weight: bold;
+		}
+    .imggg{
+      width: 400px;
+    }
 
+.button-30 {
+  margin-left: 20%;
+  margin-top: 5rem;
+  align-items: center;
+  appearance: none;
+  background-color: #FCFCFD;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395A;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.button-30:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.button-30:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button-30:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+p{
+
+  font-size: 20px;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  text-decoration: wavy;
+  font-style: bold;
+  display: inline-flex;
+
+}
+    
+</style>
 
 
 
@@ -92,79 +186,65 @@
 
     </nav>
 
-    <div class="container">
-        <a href="display.html" style="display: flex; text-decoration: none; color: black;">
-        <div class="container2">
-            <div class="imgg">
-                <img src="c5.png" style="width: 80px;">
-            </div>
-            <div class="name" style="text-align: center; text-transform: uppercase; margin-top: 1rem;">
-                <b>Area-1</b>
-            </div>
-        </div>
-        </a>
 
-        <a href="display.html" style="display: flex; text-decoration: none; color: black;">
-            <div class="container2">
-                <div class="imgg">
-                    <img src="c5.png" style="width: 80px;">
-                </div>
-                <div class="name" style="text-align: center; text-transform: uppercase; margin-top: 1rem;">
-                    <b>Area-2</b>
-                </div>
-            </div>
-            </a>
+      <div class="container">
+
+      <p>Hello,<br>
+        please generate your nodes by using button..
+      </p>
+      </div>
+      <button class="button-30" id="myButton" >Adding nodes</button>
+
        
-       
-        
-    </div>
+            <script>
 
-    <div id="container"></div>
+window.onload = function() {
 
+var button = document.getElementById("myButton");
+  var counter = 0;
+  
+  button.addEventListener("click", function() {
+    counter++;
+    if (counter === 1) {
+      console.log("Button clicked 1 time.");
+      
+          var link = document.createElement("a");
+var img = document.createElement("img");
+img.style.marginLeft="50%";
+img.style.marginBottom="1rem";
+img.style.display="flex";
+img.src = "c5.jpeg";
+img.style.width="120px";
+img.style.height="80px";
+img.alt = "Node-1";
+link.href = "display.html";
+link.appendChild(img);
+document.body.appendChild(link);
+  
 
+  
+    } else if (counter === 2) {
+      console.log('Button clicked 2 times.');
+      var link = document.createElement("a");
+var img = document.createElement("img");
+img.style.marginLeft="50%";
+img.style.display="flex";
 
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
-    <script>
-      // Initialize Firebase and create a reference to the Firestore collection
-      firebase.initializeApp({
-    apiKey: "AIzaSyB-wwlc1M3GipYOoTsusYExlNW636CPkJ0",
-    authDomain: "smc2023-aa4d4.firebaseapp.com",
-    projectId: "smc2023-aa4d4",
-    
-      });
-      const db = firebase.firestore();
-      const myCollection = db.collection("myCollection");
+img.src = "c5.jpeg";
+img.style.width="120px";
+img.style.height="80px";
+img.alt = "Node-2";
+link.href = "display2.html";
+link.appendChild(img);
+document.body.appendChild(link);
 
-      // Set up a listener for document changes
-      myCollection.onSnapshot((querySnapshot) => {
-        querySnapshot.docChanges().forEach((change) => {
-          if (change.type === "added") {
-            // Create a new div for the added document
-            const div = document.createElement("div");
+      button.disabled = true; // Disable the button
+    }
+  });
+}
 
-            // Get the data from the added document
-            const data = change.doc.data();
-
-            // Populate the div with the document data
-            const titleEl = document.createElement("h1");
-            titleEl.textContent = data.title;
-            div.appendChild(titleEl);
-
-            const subtitleEl = document.createElement("h2");
-            subtitleEl.textContent = data.subtitle;
-            div.appendChild(subtitleEl);
-
-            // Append the new div to the container element
-            const container = document.querySelector("#container");
-            container.appendChild(div);
-          }
-        });
-      });
-    
-
-
-      </script>
+            </script>
+      
    
     
 
