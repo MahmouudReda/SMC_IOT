@@ -158,7 +158,7 @@ a:hover{
          
              
              .card {
-                width: 300px;
+                width: 20%;
                 height: 300px;
                 border: 1px solid #ccc;
                 border-radius: 5px;
@@ -276,3 +276,5 @@ a:hover{
               .button-55:focus {
                 box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
               }
+
+              
