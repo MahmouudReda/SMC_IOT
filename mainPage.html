@@ -1,0 +1,111 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!-- CSS only -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;500;700;800&display=swap" rel="stylesheet">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="mainPage.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+        <link rel = "icon" href = "assets/c3-removebg-preview.png"
+        type = "image/x-icon">
+        <title>main-Page</title>
+</head>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">LogOut</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you Sure ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn-btn-primary"><a href="login.html" role="button" class="btn btn-secondary popover-test" title="Popover title" data-bs-content="Popover body content is set in this attribute.">Log out</a></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<body>
+
+    <nav>
+        <div class="appbar">
+            <div id="logo">
+                <img class="img" src="assets/c3-removebg-preview.png" style="height: auto; width: 150px;">
+                </a>
+            </div>
+            
+            <div id="menue">
+                <ul>
+                    <li>
+                        <button type="button"  class="button-30" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Log out <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                          </button>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+        </div>
+
+    </nav>
+
+
+    <div class="card">
+        <div class="card-content">
+          <h3>SmartFarm</h3>
+          <img src="assets/smartFarm.jpg" alt="Image 1" >
+          <button class="button-55" onclick="goToPage('farm-home.html')" id="go" role="button"> Go To</button>
+        </div>
+      </div>
+    
+      <div class="card">
+
+        <div class="card-content">
+          <h3>MentCare</h3>
+          <img src="assets/ment.jpg" alt="Image 2" >
+          <button class="button-55" id="go" onclick="goToPage('mentcare-home.html')" role="button"> Go To</button>
+
+        </div>
+      </div>
+    
+      <div class="card">
+
+        <div class="card-content">
+          <h3>Parking</h3>
+          <img src="assets/park.jpg" alt="Image 2" >
+          <button class="button-55" id="go" onclick="goToPage('parking.html')" role="button"> Go To</button>
+
+        </div>
+      </div>
+    
+     
+    
+
+    
+    
+
+</body>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+<script>
+
+function goToPage(url) {
+  window.location.href = url;
+}
+
+</script>
+
+
+</html>

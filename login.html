@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="login.css">
+        <title>SMC - login page</title>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+        <link rel = "icon" href = "assets/c3-removebg-preview.png"
+        type = "image/x-icon">
+    </head>
+    <body>
+
+      
+          
+        <div class="container">
+            <form class="form " id="login">
+              <CENTER>  <img src="assets/c3-removebg-preview.png" width="150px" style="margin: 1rem;" ></CENTER>
+                <div class="form__message form__message--error">
+
+                </div>
+                <div class="form__input-group">
+                    <input type="text" class="form__input" id="_email" autofocus placeholder="Email ex: emaple@fci.bu.edu.eg ">
+                    <div class="form__input-error-message">
+                        
+                    </div>
+                </div>
+                <div class="form__input-group">
+                    <input type="password" id="_password" class="form__input form__input--error" autofocus placeholder="password at least 8 character ">
+                    <div class="form__input-error-message">
+                        
+                    </div>
+                </div>
+                <button class="form__button" id="_login" formaction="/html/index.html">Log in</button>
+                
+                <p class="form__text">
+                    <a class="form__link" href="#" id="LinkCreatAccount">Don't have an Account ? Creat Account </a>
+                </p>
+            </form>
+            <form class="form form__hidden" id="CreateAcount">
+                <h1 class="form_Title">CreateAcount</h1>
+                <div class="form__message form__message--error">
+                   
+                </div>
+                <div class="form__input-group">
+                    <input type="text" class="form__input" id="Username" autofocus placeholder="user name">
+                    <div class="form__input-error-message">
+                    </div>
+                </div>
+                <div class="form__input-group">
+                    <input type="text" id="email" class="form__input" autofocus placeholder="E-mail ex: emaple@fci.bu.edu.eg">
+                    <div class="form__input-error-message">
+                    </div>
+                </div>
+                <div class="form__input-group">
+                    <input type="password" id="password" class="form__input form__input--error" autofocus placeholder="password at least 8 character ">
+                    <div class="form__input-error-message">
+                        
+                    </div>
+                </div>
+                <div class="form__input-group">
+                    <input type="password" id="repassword" class="form__input form__input--error" autofocus placeholder="Re-Enter the password ">
+                    <div class="form__input-error-message">
+                        
+                    </div>
+                </div>
+                
+                <button class="form__button" id="_singup">Sign up</button>
+                <p class="form__text">
+                    <a class="form__link" href="#" id="LinkLogin">Already have an Account ? Login</a>
+                </p>
+                
+            </form>
+        </div>
+        <script src="login.js"></script>
+            
+       
+        <script type="module">
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-app.js";
+            import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-analytics.js";
+            import { getDatabase } from "https://www.gstatic.com/firebasejs/9.19.1/firebase-database.js";
+            import { getAuth, createUserWithEmailAndPassword ,signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/9.19.1/firebase-auth.js";
+            
+            const firebaseConfig = {
+              apiKey: "AIzaSyB-wwlc1M3GipYOoTsusYExlNW636CPkJ0",
+              authDomain: "smc2023-aa4d4.firebaseapp.com",
+              databaseURL: "https://smc2023-aa4d4-default-rtdb.firebaseio.com",
+              projectId: "smc2023-aa4d4",
+              storageBucket: "smc2023-aa4d4.appspot.com",
+              messagingSenderId: "368552428642",
+              appId: "1:368552428642:web:41f2b9e5d01556e1c0fd3b",
+              measurementId: "G-PVY0D9R01Y"
+            };
+          
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const database=getDatabase(app);
+            const auth = getAuth();
+            const analytics = getAnalytics(app);
+
+            document.getElementById("_singup").addEventListener("click", e => {
+        e.preventDefault(); // Stop the form from submitting
+        var email = document.getElementById("email").value;
+        var password = document.getElementById("password").value;
+        createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+        // Signed in 
+        const user = userCredential.user;
+        window.location.href='mainPage.html'
+        
+    
+    // ...
+        })
+            .catch((error) => {
+             const errorCode = error.code;
+             const errorMessage = error.message;
+             alert(`${errorMessage} ${password}`);
+     // ..
+  });
+    });
+   document.getElementById("_login").addEventListener("click", e => {
+        e.preventDefault(); // Stop the form from submitting
+        var email = document.getElementById("_email").value;
+        var password = document.getElementById("_password").value;
+        signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            // Signed in 
+            const user = userCredential.user;
+            window.location.href='mainPage.html'
+            // ...
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            alert(`${errorMessage}`);
+        });
+    });
+            
+          </script>
+    </body>
+</html>
+
+
+  

@@ -1,0 +1,57 @@
+body{
+    padding: 0;
+    margin: 0;
+ }
+ .logout {
+     display: inline-block;
+     padding: 10px 20px;
+     background-color: #ccc;
+     color: #000;
+     text-decoration: none;
+     border-radius: 5px;
+   }
+   
+   .logout:hover {
+     background-color: #aaa;
+   }
+   nav{
+    
+    height: 80px;
+
+}
+#logo{
+    margin-left: 30px;
+    margin-top: 30px;
+    height: 150px;
+    float: left;
+}
+#menue ul{
+    list-style: none;
+    margin-top: 35px;
+    margin-right: 70px;
+    
+    
+}
+#menue ul li a{
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+    margin-top: 20px;
+}
+#menue ul li{
+    margin-right: 20px;
+    
+    margin-left: 7.5px;
+    display: inline;
+    
+}
+#menue ul li a:hover{
+    font-size: 20px;
+    border: 1px dashed black;
+    border-radius: 4px;
+    background-color: whitesmoke;
+    padding: 10px;
+}
+#menue{
+float: right;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Other HTML head elements -->
+
+  <!-- Import Firebase and Firestore SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-database.js"></script>
+<script>
+  // Initialize Firebase
+  var firebaseConfig = {
+    apiKey: "AIzaSyB-wwlc1M3GipYOoTsusYExlNW636CPkJ0",
+  authDomain: "smc2023-aa4d4.firebaseapp.com",
+  databaseURL: "https://smc2023-aa4d4-default-rtdb.firebaseio.com",
+  projectId: "smc2023-aa4d4",
+  storageBucket: "smc2023-aa4d4.appspot.com",
+  messagingSenderId: "368552428642",
+  appId: "1:368552428642:web:41f2b9e5d01556e1c0fd3b",
+  measurementId: "G-PVY0D9R01Y"
+  };
+  firebase.initializeApp(firebaseConfig);
+  // Function to handle button click event
+  function writeDateToFirebase() {
+    // Get the current date and time
+    var currentDate = new Date();
+    
+    // Convert the date to a string format
+    var dateString = currentDate.toISOString();
+    
+    // Write the date to Firebase
+    firebase.database().ref('dates').push(dateString);
+  }
+
+  // Attach the function to the button's click event
+  var button = document.getElementById('writeDateButton');
+  button.addEventListener('click', writeDateToFirebase);
+
+</script>
+
+</head>
+<body>
+  <button id="writeDateButton">Write Date to Firebase</button>
+
+    hello
+</body>
+</html>
