@@ -16,10 +16,17 @@
 </head>
 
 <style>
-
-
-
-
+  .my-class{
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  line-height: 1;
+  font-size: 52px;
+  color: black;
+  margin-top: 10%;
+  font-style: bold;
+  justify-content: center;
+text-align: center;
+  }
 </style>
 <!-- Modal -->
 
@@ -65,7 +72,7 @@ projectId: "smc2023-aa4d4",
       firebase.initializeApp(firebaseConfig);
       const db = firebase.firestore();
 
-      const collectionRef = db.collection('/users/fJOGG1kMfhrCqRGLuIdG/field/health care/esp-nodes');
+      const collectionRef = db.collection('/users/fJOGG1kMfhrCqRGLuIdG/field/ment care/esp-nodes');
 
       // Get a reference to the collection
       
@@ -80,14 +87,29 @@ projectId: "smc2023-aa4d4",
 
       function myFunction(numDocuments){
 
-for (let index = 1; index <= numDocuments; index++) {
-  if(index==1){
+for (let index = 0; index <= numDocuments; index++) {
+
+if(numDocuments==0){
+    // Create a new paragraph element
+var paragraph = document.createElement('p');
+
+// Assign a class to the paragraph element
+paragraph.className = 'my-class';
+
+// Set the text content of the paragraph
+paragraph.textContent = 'No Data Found !!';
+
+// Add the paragraph element to the document body
+document.body.appendChild(paragraph);
+
+}
+   if(index==1){
   var link = document.createElement("a"); // Create the a element
 var text = document.createTextNode("Node-1");
 link.className="lii";
 link.appendChild(text);
-link.style.marginLeft="5rem"; // Add the inner text to the element
-link.setAttribute("href", "display.html"); // Set the href attribute
+link.style.marginLeft="25%"; // Add the inner text to the element
+link.setAttribute("href", "displayment.html"); // Set the href attribute
 document.body.appendChild(link);
   }
   else if(index==2){
@@ -95,25 +117,10 @@ document.body.appendChild(link);
 var text = document.createTextNode("Node-2");
 link.className="lii";
 link.appendChild(text); // Add the inner text to the element
-link.setAttribute("href", "display2.html"); // Set the href attribute
+link.setAttribute("href", "displayment2.html"); // Set the href attribute
 document.body.appendChild(link);
   }
-  else if(index==3){
-  var link = document.createElement("a"); // Create the a element
-var text = document.createTextNode("Node-3");
-link.className="lii";
-link.appendChild(text); // Add the inner text to the element
-link.setAttribute("href", "display3.html"); // Set the href attribute
-document.body.appendChild(link);
-  }
-  else if(index==4){
-  var link = document.createElement("a"); // Create the a element
-var text = document.createTextNode("Node-4");
-link.className="lii";
-link.appendChild(text); // Add the inner text to the element
-link.setAttribute("href", "display3.html"); // Set the href attribute
-document.body.appendChild(link);
-  }
+  
 
 }
 

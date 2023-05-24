@@ -127,12 +127,12 @@ margin: 10px 0;
 
  
   function updateFieldValue1() {
-    var collectionRef = db.collection("/users/fJOGG1kMfhrCqRGLuIdG/field/smart-farm/esp - nodes/esp - 1/controlling");
+    var collectionRef = db.collection("/users/fJOGG1kMfhrCqRGLuIdG/field/smart-farm/esp - nodes/esp - 2/controlling");
     var documentID = "pump-button";
 
     // Update the field value
     collectionRef.doc(documentID).update({
-      pump: "true"
+      pump: 'true'
     })
     .then(function() {
       console.log("Field value updated successfully!");
@@ -143,12 +143,12 @@ margin: 10px 0;
   }
 
   function updateFieldValue2() {
-    var collectionRef = db.collection("/users/fJOGG1kMfhrCqRGLuIdG/field/smart-farm/esp - nodes/esp - 1/controlling");
+    var collectionRef = db.collection("/users/fJOGG1kMfhrCqRGLuIdG/field/smart-farm/esp - nodes/esp - 2/controlling");
     var documentID = "pump-button";
 
     // Update the field value
     collectionRef.doc(documentID).update({
-      pump: "false"
+      pump: 'false'
     })
     .then(function() {
       console.log("Field value updated successfully!");

@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="display-farm.css">
   <link rel = "icon" href = "assets/c3-removebg-preview.png"
         type = "image/x-icon">
-	<title>SMC - IOT</title>
+	<title>Monitoring SMC</title>
 </head>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -78,7 +78,7 @@ margin: 10px 0;
             <div id="menue">
                 <ul>
                     <li>
-                      <button type="button"  class="button-30" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      <button type="button"  class="button-30" onclick="goToPage('login.html')" data-bs-toggle="modal" data-bs-target="#exampleModal">
                         Log out <i class="fa-solid fa-arrow-right-to-bracket"></i>
                       </button>
                     </li>
@@ -133,13 +133,9 @@ margin: 10px 0;
       
 
     <div class="container" style="box-shadow: 0 0 40px rgba(0, 0, 0, 0.2); margin-top: 3rem;width:50%;">
-      <b>Water Pump : </b>
-        <div class="button-div" style="margin-left: 2rem;">
-    
-          <input class="tgl tgl-skewed" id="cb3" type="checkbox"/>
-          <label class="tgl-btn" data-tg-off="OFF" data-tg-on="ON" for="cb3"></label>
-          
-          
+      
+      <button class="button-30" onclick="goToPage('Automation.html')" id="go" role="button"> <img src="assets/0c675a8e1061478d2b7b21b330093444.gif" style="height: auto; width: 50px;margin-right: 1rem;">Automation</button>
+
           
       </div>
 
@@ -168,7 +164,6 @@ const firebaseConfig = {
 
   firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
-
 
     
     const usersRef = db.collection('/users/fJOGG1kMfhrCqRGLuIdG/field/smart-farm/esp - nodes/esp - 1/monitoring');
@@ -223,6 +218,7 @@ const firebaseConfig = {
           userList.appendChild(li);
         });
       });
+
       
 
 

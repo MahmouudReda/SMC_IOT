@@ -15,7 +15,19 @@
         <title>SMC</title>
 </head>
 
-
+<style>
+  .my-class{
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  line-height: 1;
+  font-size: 52px;
+  color: black;
+  margin-top: 10%;
+  font-style: bold;
+  justify-content: center;
+text-align: center;
+  }
+</style>
 
 
 <body>
@@ -74,8 +86,23 @@ projectId: "smc2023-aa4d4",
 
       function myFunction(numDocuments){
 
-for (let index = 1; index <= numDocuments; index++) {
-  if(index==1){
+for (let index = 0; index <= numDocuments; index++) {
+
+if(numDocuments==0){
+    // Create a new paragraph element
+var paragraph = document.createElement('p');
+
+// Assign a class to the paragraph element
+paragraph.className = 'my-class';
+
+// Set the text content of the paragraph
+paragraph.textContent = 'No Data Found !!';
+
+// Add the paragraph element to the document body
+document.body.appendChild(paragraph);
+
+}
+   if(index==1){
   var link = document.createElement("a"); // Create the a element
 var text = document.createTextNode("Node-1");
 link.className="lii";
