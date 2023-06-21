@@ -2,13 +2,12 @@
 <head>
 	<meta charset="UTF-8">
 	<!-- CSS only -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;500;700;800&display=swap" rel="stylesheet">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="field-home.css">
+	<link rel="stylesheet" href="display-farm.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
         <link rel = "icon" href = "assets/c3-removebg-preview.png"
         type = "image/x-icon">
@@ -16,18 +15,51 @@
 </head>
 
 <style>
-  .my-class{
-  font-family: "JetBrains Mono",monospace;
-  height: 48px;
-  line-height: 1;
-  font-size: 52px;
-  color: black;
-  margin-top: 10%;
-  font-style: bold;
-  justify-content: center;
+    .my-class{
+    font-family: "JetBrains Mono",monospace;
+    height: 48px;
+    line-height: 1;
+    font-size: 52px;
+    color: black;
+    margin-top: 10%;
+    font-style: bold;
+    justify-content: center;
 text-align: center;
-  }
+    }
+    .card {
+  align-items: center;
+    justify-items:center ;
+    justify-content: center;
+  width: 20%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+  margin-top: 8rem;
+  margin-left: 3rem;
+}
+.card img {
+  width: 100%;
+  height: 170;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+}
+
+.card-content {
+  margin-top: 10px;
+}
+
+.card-content h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.card-content p {
+  font-size: 14px;
+  color: #888;
+}
 </style>
+
 
 
 <body>
@@ -42,7 +74,6 @@ text-align: center;
             <div id="menue">
                 <ul>
                     <li>
-                      <button class="button-30" onclick="goToPage('farm/templates/index.html')" id="go" role="button"> <img src="assets/0c675a8e1061478d2b7b21b330093444.gif" style="height: auto; width: 50px;margin-right: 1rem;">ML</button>
 
                     </li>
                     
@@ -53,25 +84,32 @@ text-align: center;
 
     </nav>
 
+    <CENTER><div class="card">
+      <div class="card-content">
+        <h3 style="font-size: 30px; margin-bottom: 2rem;">Esp - Nodes</h3>
+        <img src="assets/esp.gif" alt="Image 1" style="width: 150px; height: auto;">
+        <button class="button-55" onclick="goToPage('display-farm1.html')" id="go" role="button">Esp - 1</button>
+
+      </div>
+    </div></CENTER>
     
     
 
 </body>
-
 
 <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
     <script>
       // Initialize Firebase
       var firebaseConfig = {
-        apiKey: "AIzaSyB-wwlc1M3GipYOoTsusYExlNW636CPkJ0",
-authDomain: "smc2023-aa4d4.firebaseapp.com",
-projectId: "smc2023-aa4d4",
+        apiKey: "AIzaSyCf3FJXVeM1SDA8YWQWR1EOK8OzOwah3fQ",
+  authDomain: "smc-iot-ae076.firebaseapp.com",
+  projectId: "smc-iot-ae076",
       };
       firebase.initializeApp(firebaseConfig);
       const db = firebase.firestore();
 
-      const collectionRef = db.collection('/users/fJOGG1kMfhrCqRGLuIdG/field/smart-farm/esp - nodes');
+      const collectionRef = db.collection('/users/87KdcdfQulP1sE14AXlTaTQHB8n1/field/Smart Home/esp-nodes');
 
       // Get a reference to the collection
       
@@ -86,7 +124,7 @@ projectId: "smc2023-aa4d4",
 
       function myFunction(numDocuments){
 
-for (let index = 0; index <= numDocuments; index++) {
+for (let index = 5; index <= numDocuments; index++) {
 
 if(numDocuments==0){
     // Create a new paragraph element
@@ -141,4 +179,3 @@ document.body.appendChild(link);
   
 
 </html>
-

@@ -1,0 +1,181 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!-- CSS only -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="display-farm.css">
+
+  <link rel = "icon" href = "assets/c3-removebg-preview.png"
+        type = "image/x-icon">
+	<title>SMC - IOT</title>
+</head>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">LogOut</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Are you Sure ?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn-btn-primary"><a href="login.html" role="button" class="btn btn-secondary popover-test" title="Popover title" data-bs-content="Popover body content is set in this attribute.">Log out</a></button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style>
+  .document-container {
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.document-container h2 {
+  margin-top: 0;
+}
+  #temp {
+list-style: none;
+padding: 0;
+}
+#hum {
+list-style: none;
+padding: 0;
+}
+#mois {
+list-style: none;
+padding: 0;
+}
+
+#user-list li {
+margin: 10px 0;
+}
+</style>
+
+
+
+<body>
+
+    <nav>
+        <div class="appbar">
+            <div id="logo">
+                <img class="img" src="assets/c3-removebg-preview.png" style="height: auto; width: 150px;">
+                </a>
+            </div>
+            
+            <div id="menue">
+                <ul>
+                    <li>
+                      <button type="button"  class="button-30" onclick="goToPage('login.html')" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Log out <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                      </button>
+                    </li>
+                    
+                </ul>
+            </div>
+            
+        </div>
+
+    </nav>
+    <div class="maint" style="margin-top: 2rem;">
+      <button class="button-30" onclick="goToPage('automation.html')" id="go" role="button"> <img src="assets/0c675a8e1061478d2b7b21b330093444.gif" style="height: auto; width: 50px;margin-right: 1rem; ">Automation</button>
+    </div>
+
+
+    <CENTER><div class="card">
+      <div class="card-content">
+        <h3>water-pump</h3>
+        <img src="assets/irr.avif" alt="Image 1" >
+        <button class="button-55" onclick="updateFieldValue1()" id="go" role="button"> ON </button>
+        <button class="button-55" onclick="updateFieldValue2()" id="go" role="button"> OFF </button>
+
+      </div>
+    </div></CENTER>
+
+</body>
+</html>
+    
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+<script>
+  // Initialize Firebase
+  var firebaseConfig = {
+    apiKey: "AIzaSyB-wwlc1M3GipYOoTsusYExlNW636CPkJ0",
+  authDomain: "smc2023-aa4d4.firebaseapp.com",
+  databaseURL: "https://smc2023-aa4d4-default-rtdb.firebaseio.com",
+  projectId: "smc2023-aa4d4",
+  storageBucket: "smc2023-aa4d4.appspot.com",
+  messagingSenderId: "368552428642",
+  appId: "1:368552428642:web:41f2b9e5d01556e1c0fd3b",
+  measurementId: "G-PVY0D9R01Y"
+  };
+  // Function to handle button click event
+  firebase.initializeApp(firebaseConfig);
+
+  // Initialize Firestore
+  var db = firebase.firestore();
+
+ 
+  function updateFieldValue1() {
+    var collectionRef = db.collection("/users/fJOGG1kMfhrCqRGLuIdG/field/smart-farm/esp - nodes/esp - 2/controlling");
+    var documentID = "pump-button";
+
+    // Update the field value
+    collectionRef.doc(documentID).update({
+      pump: 'true'
+    })
+    .then(function() {
+      console.log("Field value updated successfully!");
+    })
+    .catch(function(error) {
+      console.error("Error updating field value: ", error);
+    });
+  }
+
+  function updateFieldValue2() {
+    var collectionRef = db.collection("/users/fJOGG1kMfhrCqRGLuIdG/field/smart-farm/esp - nodes/esp - 2/controlling");
+    var documentID = "pump-button";
+
+    // Update the field value
+    collectionRef.doc(documentID).update({
+      pump: 'false'
+    })
+    .then(function() {
+      console.log("Field value updated successfully!");
+    })
+    .catch(function(error) {
+      console.error("Error updating field value: ", error);
+    });
+  }
+
+
+  
+</script>
+
+
+
+
+</head>
+
+<script>
+
+  function goToPage(url) {
+    window.location.href = url;
+  }
+  
+  </script>
+
+</html>

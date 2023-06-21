@@ -2,7 +2,6 @@
 <head>
 	<meta charset="UTF-8">
 	<!-- CSS only -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;500;700;800&display=swap" rel="stylesheet">
@@ -32,11 +31,14 @@
   #blood {
 list-style: none;
 padding: 0;
+font-size: 22px;
 color: red;
 }
 #heart {
 list-style: none;
 padding: 0;
+font-size: 22px;
+
 color:red;
 }
 
@@ -71,72 +73,49 @@ margin: 10px 0;
         </div>
 
     </nav>
-
-    <div class="container">
-      <div class="container2">
-        <div class="imgg" style="text-align: center;">
-          <img src="assets/bloodd.png" style="width: 100px;">
+    <div class="maint">
+      <div class="card" style="width: 27%;">
+       <CENTER> <div class="card-content">
+          <h3 style="font-size: 30px;">Blood Oxygen</h3>
+          <img src="assets/bloodd.png" alt="Image 1" style="width: 150px;">
+          <h3><ul id="blood"></ul></h3>
+  
+        </div> </CENTER>
+      </div> 
+  
+      <div class="card" style="width: 27%;">
+       <CENTER> <div class="card-content">
+          <h3 style="font-size: 30px;">HeartRate</h3>
+          <img src="assets/heartbeat.gif" alt="Image 1" style="width: 150px">
+          <h3><ul id="heart"></ul></h3>
+        </div></CENTER>
       </div>
-      <div class="name" style="text-align: center; text-transform: uppercase; margin-top: 1rem;">
-          <b>Blood Oxygen</b><br>
-          <b><ul id="blood"></ul></b>
-      </div>
-      </div>
-
-
-
-    <div class="container2">
-      <div class="imgg" style="text-align: center;">
-        <img src="assets/heart.png" style="width: 100px;">
-    </div>
-    <div class="name" style="text-align: center; text-transform: uppercase; margin-top: 1rem;">
-        <b>HeartBeat</b><br>
-        <b><ul id="heart"></ul></b>
-    </div>
-    </div> 
- 
-
-
-
-    </div>
-
-
-      
 
     
-
-          
-          
-    
-   
-
-    
-     
-
     
 <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
 <script type="module">
 const firebaseConfig = {
-    apiKey: "AIzaSyB-wwlc1M3GipYOoTsusYExlNW636CPkJ0",
-    authDomain: "smc2023-aa4d4.firebaseapp.com",
-    databaseURL: "https://smc2023-aa4d4-default-rtdb.firebaseio.com",
-    projectId: "smc2023-aa4d4",
-    storageBucket: "smc2023-aa4d4.appspot.com",
-    messagingSenderId: "368552428642",
-    appId: "1:368552428642:web:41f2b9e5d01556e1c0fd3b",
-    measurementId: "G-PVY0D9R01Y"
-  };
+  apiKey: "AIzaSyCf3FJXVeM1SDA8YWQWR1EOK8OzOwah3fQ",
+  authDomain: "smc-iot-ae076.firebaseapp.com",
+  projectId: "smc-iot-ae076",
+  storageBucket: "smc-iot-ae076.appspot.com",
+  messagingSenderId: "499857190819",
+  appId: "1:499857190819:web:b8d5e0125071db946b7416",
+  measurementId: "G-3FF6TKR841"
+};
+
 
   firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
 
     
-    const usersRef = db.collection('/users/fJOGG1kMfhrCqRGLuIdG/field/ment care/esp-nodes/esp - 1/monitoring');
+    const usersRef = db.collection('/users/87KdcdfQulP1sE14AXlTaTQHB8n1/field/smart-health/esp-nodes/esp-1/monitoring');
 
 
 
-      const query = usersRef.where('blood', '>=', 0);
+      const query = usersRef.where('SpO2', '>=', 0);
 
       // Listen for changes to the query
       query.onSnapshot((querySnapshot) => {
@@ -148,12 +127,12 @@ const firebaseConfig = {
         querySnapshot.forEach((doc) => {
           const user = doc.data();
           const li = document.createElement('li');
-          li.innerHTML = `${user.blood} `;
+          li.innerHTML = `${user.SpO2} `;
           userList.appendChild(li);
         });
       });
 
-      const queryh = usersRef.where('Heartbeat', '>=', 0);
+      const queryh = usersRef.where('HeartRate', '>=', 0);
       queryh.onSnapshot((querySnapshot) => {
         // Clear the user list
         const userList = document.getElementById('heart');
@@ -163,7 +142,7 @@ const firebaseConfig = {
         querySnapshot.forEach((doc) => {
           const user = doc.data();
           const li = document.createElement('li');
-          li.innerHTML = `${user.Heartbeat} `;
+          li.innerHTML = `${user.HeartRate} `;
           userList.appendChild(li);
         });
       });

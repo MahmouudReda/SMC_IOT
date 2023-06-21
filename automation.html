@@ -2,7 +2,6 @@
 <head>
 	<meta charset="UTF-8">
 	<!-- CSS only -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;500;700;800&display=swap" rel="stylesheet">
@@ -15,24 +14,70 @@
         type = "image/x-icon">
 	<title>SMC - IOT</title>
 </head>
+<style>
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+}
+.card {
+  align-items: center;
+    justify-items:center ;
+    justify-content: center;
+  width: 20%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+  margin-top: 8rem;
+  margin-left: 3rem;
+}
+.card img {
+  width: 100%;
+  height: 170;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+}
+
+.card-content {
+  margin-top: 10px;
+}
+
+.card-content h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.card-content p {
+  font-size: 14px;
+  color: #888;
+}
+.popup-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+</style>
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">LogOut</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Are you Sure ?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn-btn-primary"><a href="login.html" role="button" class="btn btn-secondary popover-test" title="Popover title" data-bs-content="Popover body content is set in this attribute.">Log out</a></button>
-      </div>
-    </div>
-  </div>
-</div>
+
+
 
 
 <style>
@@ -93,10 +138,10 @@ margin: 10px 0;
 
 
     <CENTER><div class="card">
-      <div class="card-content">
-        <h3>water-pump</h3>
-        <img src="assets/irr.avif" alt="Image 1" >
-        <button class="button-55" onclick="updateFieldValue1()" id="go" role="button"> ON </button>
+     <div class="card-content">
+        <h3 style="font-size: 30px;">water-pump</h3>
+        <img src="assets/waterirr.gif" alt="Image 1" style="width: 150px;">
+        <button class="button-55" onclick="updateFieldValue1()" id="go" role="button" style="margin: 0;"> ON </button>
         <button class="button-55" onclick="updateFieldValue2()" id="go" role="button"> OFF </button>
 
       </div>
@@ -109,16 +154,15 @@ margin: 10px 0;
 <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
 <script>
   // Initialize Firebase
-  var firebaseConfig = {
-    apiKey: "AIzaSyB-wwlc1M3GipYOoTsusYExlNW636CPkJ0",
-  authDomain: "smc2023-aa4d4.firebaseapp.com",
-  databaseURL: "https://smc2023-aa4d4-default-rtdb.firebaseio.com",
-  projectId: "smc2023-aa4d4",
-  storageBucket: "smc2023-aa4d4.appspot.com",
-  messagingSenderId: "368552428642",
-  appId: "1:368552428642:web:41f2b9e5d01556e1c0fd3b",
-  measurementId: "G-PVY0D9R01Y"
-  };
+  const firebaseConfig = {
+  apiKey: "AIzaSyCf3FJXVeM1SDA8YWQWR1EOK8OzOwah3fQ",
+  authDomain: "smc-iot-ae076.firebaseapp.com",
+  projectId: "smc-iot-ae076",
+  storageBucket: "smc-iot-ae076.appspot.com",
+  messagingSenderId: "499857190819",
+  appId: "1:499857190819:web:b8d5e0125071db946b7416",
+  measurementId: "G-3FF6TKR841"
+};
   // Function to handle button click event
   firebase.initializeApp(firebaseConfig);
 
@@ -127,12 +171,12 @@ margin: 10px 0;
 
  
   function updateFieldValue1() {
-    var collectionRef = db.collection("/users/fJOGG1kMfhrCqRGLuIdG/field/smart-farm/esp - nodes/esp - 1/controlling");
+    var collectionRef = db.collection("/users/87KdcdfQulP1sE14AXlTaTQHB8n1/field/Smart Farm/esp-nodes/esp-1/controlling");
     var documentID = "pump-button";
 
     // Update the field value
     collectionRef.doc(documentID).update({
-      pump: "true"
+      "pump-button": Boolean(true)
     })
     .then(function() {
       console.log("Field value updated successfully!");
@@ -143,12 +187,12 @@ margin: 10px 0;
   }
 
   function updateFieldValue2() {
-    var collectionRef = db.collection("/users/fJOGG1kMfhrCqRGLuIdG/field/smart-farm/esp - nodes/esp - 1/controlling");
+    var collectionRef = db.collection("/users/87KdcdfQulP1sE14AXlTaTQHB8n1/field/Smart Farm/esp-nodes/esp-1/controlling");
     var documentID = "pump-button";
 
     // Update the field value
     collectionRef.doc(documentID).update({
-      pump: "false"
+      "pump-button": Boolean(false)
     })
     .then(function() {
       console.log("Field value updated successfully!");

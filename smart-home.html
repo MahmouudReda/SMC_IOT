@@ -8,7 +8,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;500;700;800&display=swap" rel="stylesheet">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="field-home.css">
+	<link rel="stylesheet" href="display-farm.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
         <link rel = "icon" href = "assets/c3-removebg-preview.png"
         type = "image/x-icon">
@@ -43,7 +43,6 @@ text-align: center;
             <div id="menue">
                 <ul>
                     <li>
-                      <button class="button-30" onclick="goToPage('farm/templates/index.html')" id="go" role="button"> <img src="assets/0c675a8e1061478d2b7b21b330093444.gif" style="height: auto; width: 50px;margin-right: 1rem;">ML</button>
 
                     </li>
                     
@@ -54,25 +53,32 @@ text-align: center;
 
     </nav>
 
+    <CENTER><div class="card">
+      <div class="card-content">
+        <h3 style="font-size: 30px; margin-bottom: 2rem;">Esp - Nodes</h3>
+        <img src="assets/esp.gif" alt="Image 1" style="width: 150px; height: auto;">
+        <button class="button-55" onclick="goToPage('display-home1.html')" id="go" role="button">Esp - 1</button>
+
+      </div>
+    </div></CENTER>
     
     
 
 </body>
-
 
 <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
     <script>
       // Initialize Firebase
       var firebaseConfig = {
-        apiKey: "AIzaSyB-wwlc1M3GipYOoTsusYExlNW636CPkJ0",
-authDomain: "smc2023-aa4d4.firebaseapp.com",
-projectId: "smc2023-aa4d4",
+        apiKey: "AIzaSyCf3FJXVeM1SDA8YWQWR1EOK8OzOwah3fQ",
+  authDomain: "smc-iot-ae076.firebaseapp.com",
+  projectId: "smc-iot-ae076",
       };
       firebase.initializeApp(firebaseConfig);
       const db = firebase.firestore();
 
-      const collectionRef = db.collection('/users/fJOGG1kMfhrCqRGLuIdG/field/smarthome/esp - nodes');
+      const collectionRef = db.collection('/users/87KdcdfQulP1sE14AXlTaTQHB8n1/field/Smart Home/esp-nodes');
 
       // Get a reference to the collection
       
@@ -87,7 +93,7 @@ projectId: "smc2023-aa4d4",
 
       function myFunction(numDocuments){
 
-for (let index = 0; index <= numDocuments; index++) {
+for (let index = 5; index <= numDocuments; index++) {
 
 if(numDocuments==0){
     // Create a new paragraph element
@@ -142,4 +148,3 @@ document.body.appendChild(link);
   
 
 </html>
-

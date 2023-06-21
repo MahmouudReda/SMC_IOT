@@ -2,7 +2,6 @@
 <head>
 	<meta charset="UTF-8">
 	<!-- CSS only -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css" integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;500;700;800&display=swap" rel="stylesheet">
@@ -15,23 +14,7 @@
 	<title>Monitoring SMC</title>
 </head>
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">LogOut</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        Are you Sure ?
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn-btn-primary"><a href="login.html" role="button" class="btn btn-secondary popover-test" title="Popover title" data-bs-content="Popover body content is set in this attribute.">Log out</a></button>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 
 <style>
@@ -49,19 +32,68 @@
   #temp {
 list-style: none;
 padding: 0;
+color: red;
+font-size: 22px;
+
 }
 #hum {
 list-style: none;
 padding: 0;
+color: red;
+font-size: 22px;
 }
 #mois {
 list-style: none;
 padding: 0;
+color: red;
+font-size: 22px;
+
 }
 
 #user-list li {
 margin: 10px 0;
 }
+.texx{
+margin-top: 3rem;
+margin-bottom: 0rem;
+font-family: "JetBrains Mono",monospace;
+    height: 48px;
+}
+.modal-label {
+      font-weight: bold;
+      font-size: 18px;
+      color: #333;
+    } 
+    /* Popup styles */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 9999;
+    }
+
+    .popup-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    }
+  
 </style>
 
 
@@ -78,9 +110,11 @@ margin: 10px 0;
             <div id="menue">
                 <ul>
                     <li>
-                      <button type="button"  class="button-30" onclick="goToPage('login.html')" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                        Log out <i class="fa-solid fa-arrow-right-to-bracket"></i>
-                      </button>
+                      <li>
+                        <button type="button"  class="button-30" onclick="goToPage('login.html')" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                          Log out <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                        </button>
+                      </li>
                     </li>
                     
                 </ul>
@@ -90,54 +124,42 @@ margin: 10px 0;
 
     </nav>
 
-    <div class="container">
-      <div class="container2">
-        <div class="imgg" style="text-align: center;">
-          <img src="assets/c4.jpeg" style="width: 100px;">
-      </div>
-      <div class="name" style="text-align: center; text-transform: uppercase; margin-top: 1rem;">
-          <b>Temperature</b><br>
-          <b><ul id="temp"></ul></b>
-      </div>
-      </div>
 
-
-
-    <div class="container2">
-      <div class="imgg" style="text-align: center;">
-        <img src="assets/c2.jpeg" style="width: 100px;">
-    </div>
-    <div class="name" style="text-align: center; text-transform: uppercase; margin-top: 1rem;">
-        <b>Hummidity</b><br>
-        <b><ul id="hum"></ul></b>
-    </div>
-    </div> 
-
-
-
-    <div class="container2">
-      <div class="imgg" style="justify-content: center; text-align: center;">
-        <img src="assets/c8.jpeg" style="width: 100px;">
-    </div>
-    <div class="name" style="text-align: center; text-transform: uppercase; margin-top: 1rem;">
-        <b>Moisture</b><br>
-        <b><ul id="mois"></ul> </b>
-    </div>
-    </div>  
-
-
-
-    </div>
-
-
+      <div class="maint">
+          <div class="card" style="width: 27%;">
+           <CENTER> <div class="card-content">
+              <h3 style="font-size: 30px;">Temperature</h3>
+              <img src="assets/temperature.gif" alt="Image 1" style="width: 150px;">
+              <h3><ul id="temp"></ul></h3>
+      
+            </div> </CENTER>
+          </div> 
+      
+          <div class="card" style="width: 27%;">
+           <CENTER> <div class="card-content">
+              <h3 style="font-size: 30px;">Humidity</h3>
+              <img src="assets/humidity.gif" alt="Image 1" style="width: 150px">
+              <h3><ul id="hum"></ul></h3>
+            </div></CENTER>
+          </div>
+      
+          <div class="card" style="width: 27%;">
+           <CENTER> <div class="card-content">
+                <h3 style="font-size: 30px;">moisturelevel</h3>
+                <img src="assets/moisture (2).gif" alt="Image 1" style="width: 150px;">
+                <h3><ul id="mois"></ul></h3>
+        
+              </div> </CENTER>
+            </div>
+        
+      </div> 
+    <div class="maint" style="margin-top: 8rem;">
+    <button class="button-30" onclick="goToPage('automation.html')" id="go" role="button"> <img src="assets/0c675a8e1061478d2b7b21b330093444.gif" style="height: auto; width: 50px;margin-right: 1rem; ">Automation</button>
+  </div>
       
 
-    <div class="container" style="box-shadow: 0 0 40px rgba(0, 0, 0, 0.2); margin-top: 3rem;width:50%;">
+    
       
-      <button class="button-30" onclick="goToPage('Automation.html')" id="go" role="button"> <img src="assets/0c675a8e1061478d2b7b21b330093444.gif" style="height: auto; width: 50px;margin-right: 1rem;">Automation</button>
-
-          
-      </div>
 
           
           
@@ -147,30 +169,29 @@ margin: 10px 0;
     
      
 
-    
+
 <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
 <script type="module">
 const firebaseConfig = {
-    apiKey: "AIzaSyB-wwlc1M3GipYOoTsusYExlNW636CPkJ0",
-    authDomain: "smc2023-aa4d4.firebaseapp.com",
-    databaseURL: "https://smc2023-aa4d4-default-rtdb.firebaseio.com",
-    projectId: "smc2023-aa4d4",
-    storageBucket: "smc2023-aa4d4.appspot.com",
-    messagingSenderId: "368552428642",
-    appId: "1:368552428642:web:41f2b9e5d01556e1c0fd3b",
-    measurementId: "G-PVY0D9R01Y"
-  };
+  apiKey: "AIzaSyCf3FJXVeM1SDA8YWQWR1EOK8OzOwah3fQ",
+  authDomain: "smc-iot-ae076.firebaseapp.com",
+  projectId: "smc-iot-ae076",
+  storageBucket: "smc-iot-ae076.appspot.com",
+  messagingSenderId: "499857190819",
+  appId: "1:499857190819:web:b8d5e0125071db946b7416",
+  measurementId: "G-3FF6TKR841"
+};
 
   firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
 
     
-    const usersRef = db.collection('/users/fJOGG1kMfhrCqRGLuIdG/field/smart-farm/esp - nodes/esp - 1/monitoring');
+    const usersRef = db.collection('/users/87KdcdfQulP1sE14AXlTaTQHB8n1/field/Smart Farm/esp-nodes/esp-1/monitoring');
 
 
 
-      const query = usersRef.where('temperature', '>', 1);
+      const query = usersRef.where('temp', '>', 1);
 
       // Listen for changes to the query
       query.onSnapshot((querySnapshot) => {
@@ -182,12 +203,12 @@ const firebaseConfig = {
         querySnapshot.forEach((doc) => {
           const user = doc.data();
           const li = document.createElement('li');
-          li.innerHTML = `${user.temperature} `;
+          li.innerHTML = `${user.temp} `;
           userList.appendChild(li);
         });
       });
 
-      const queryh = usersRef.where('humidity', '>', 1);
+      const queryh = usersRef.where('hum', '>', 1);
       queryh.onSnapshot((querySnapshot) => {
         // Clear the user list
         const userList = document.getElementById('hum');
@@ -197,12 +218,12 @@ const firebaseConfig = {
         querySnapshot.forEach((doc) => {
           const user = doc.data();
           const li = document.createElement('li');
-          li.innerHTML = `${user.humidity} `;
+          li.innerHTML = `${user.hum} `;
           userList.appendChild(li);
         });
       });
 
-      const querym = usersRef.where('moisture', '>', 1);
+      const querym = usersRef.where('moisturelevel', '>', 1);
 
 
       querym.onSnapshot((querySnapshot) => {
@@ -214,12 +235,18 @@ const firebaseConfig = {
         querySnapshot.forEach((doc) => {
           const user = doc.data();
           const li = document.createElement('li');
-          li.innerHTML = `${user.moisture} `;
+          li.innerHTML = `${user.moisturelevel} `;
           userList.appendChild(li);
-        });
-      });
 
+        
+        });
+        
+      });
       
+      
+    // You can perform other actions or operations with the text variable here
+
+
 
 
 
@@ -231,9 +258,7 @@ const firebaseConfig = {
 </body>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+
 
 <script>
 
@@ -241,8 +266,21 @@ const firebaseConfig = {
     window.location.href = url;
   }
   
+  
   </script>
+ <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBjqYVhMEa24CxLWmQo3QkkL4WPXT34qbI&libraries=places"></script>
 
+
+
+<script>
+  function openPopup() {
+    document.getElementById("popup").style.display = "block";
+  }
+
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+</script>
 
 </html>
 

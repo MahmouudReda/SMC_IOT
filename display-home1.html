@@ -1,0 +1,307 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<!-- CSS only -->
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;500;700;800&display=swap" rel="stylesheet">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="display-farm.css">
+  <link rel = "icon" href = "assets/c3-removebg-preview.png"
+        type = "image/x-icon">
+	<title>Monitoring SMC</title>
+</head>
+<!-- Modal -->
+
+
+
+<style>
+  .document-container {
+  background-color: #f2f2f2;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.document-container h2 {
+  margin-top: 0;
+}
+  #WaterLevel {
+list-style: none;
+padding: 0;
+color: red;
+}
+#Flame {
+list-style: none;
+padding: 0;
+color: red;
+
+}
+#sound {
+list-style: none;
+padding: 0;
+color: red;
+
+}
+#PIR {
+list-style: none;
+padding: 0;
+color: red;
+font-size: 16px;
+}
+
+#user-list li {
+margin: 10px 0;
+}
+.modal-label {
+      font-weight: bold;
+      font-size: 18px;
+      color: #333;
+    } 
+    /* Popup styles */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 9999;
+    }
+
+    .popup-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    }
+  
+</style>
+
+
+
+<body>
+
+  <nav>
+    <div class="appbar">
+        <div id="logo">
+            <img class="img" src="assets/c3-removebg-preview.png" style="height: auto; width: 150px;">
+            </a>
+        </div>
+        
+        <div id="menue">
+            <ul>
+                <li>
+                  <button class="button-30" onclick="goToPage('homeAuto.html')" id="go" role="button"> <img src="assets/0c675a8e1061478d2b7b21b330093444.gif" style="height: auto; width: 50px;margin-right: 1rem; ">Automation</button>
+
+                </li>
+                
+            </ul>
+        </div>
+        
+    </div>
+
+</nav>
+
+    <CENTER><div class="maint">
+    <div class="card" style="width: 27%;">
+
+      <CENTER><div class="card-content">
+        <h3 style="font-size: 30px;">water-Level</h3>
+        <img src="assets/rain.gif" alt="Image 1" style="width: 150px;">
+        <h3><ul id="WaterLevel"></ul></h3>
+      </div> </CENTER>
+    </div>
+
+    <div class="card" style="width: 27%;">
+      <CENTER><div class="card-content">
+        <h3 style="font-size: 30px; margin-bottom: 2rem;">Flame-Status</h3>
+        <img src="assets/flame.png" alt="Image 1" style="height: 50%; width: 25%;">
+        <img src="assets/not flame.png" alt="Image 1" style="height: 50%; width: 25%;">
+
+        <h3 style="margin-top: 0rem;"><ul id="Flame"></ul></h3>
+      </div></CENTER>
+    </div>
+
+    <div class="card" style="width: 27%;">
+      <CENTER><div class="card-content">
+          <h3 style="font-size: 30px;">Speaker</h3>
+          <img src="assets/sound.gif" alt="Image 1" style="width: 150px;">
+          <h3><ul id="sound"></ul></h3>
+  
+        </div></CENTER>
+      </div>
+  
+      <div class="card" style="width: 27%;">
+        <CENTER><div class="card-content">
+            <h3 style="font-size: 22px;">Motion-Detection</h3>
+            <img src="assets/pir (2).gif" alt="Image 1" style="width: 150px;">
+
+        <h3><ul id="PIR"></ul></h3>
+    
+          </div></CENTER>
+        </div>
+      </div> </CENTER>
+ 
+</body>
+
+   
+     
+
+
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+<script type="module">
+const firebaseConfig = {
+  apiKey: "AIzaSyCf3FJXVeM1SDA8YWQWR1EOK8OzOwah3fQ",
+  authDomain: "smc-iot-ae076.firebaseapp.com",
+  projectId: "smc-iot-ae076",
+  storageBucket: "smc-iot-ae076.appspot.com",
+  messagingSenderId: "499857190819",
+  appId: "1:499857190819:web:b8d5e0125071db946b7416",
+  measurementId: "G-3FF6TKR841"
+};
+
+  firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    
+    const usersRef = db.collection('/users/87KdcdfQulP1sE14AXlTaTQHB8n1/field/Smart Home/esp-nodes/esp-1/monitoring');
+
+
+
+      const query = usersRef.where('WaterLevel', '>=', 0);
+
+      // Listen for changes to the query
+      query.onSnapshot((querySnapshot) => {
+        // Clear the user list
+        const userList = document.getElementById('WaterLevel');
+        userList.innerHTML = '';
+
+        // Populate the user list with the data
+        querySnapshot.forEach((doc) => {
+          const user = doc.data();
+          const li = document.createElement('li');
+          li.innerHTML = `${user.WaterLevel} `;
+          userList.appendChild(li);
+        });
+      });
+
+      const queryh = usersRef.where('Flame', '>=', 0);
+      queryh.onSnapshot((querySnapshot) => {
+        // Clear the user list
+        const userList = document.getElementById('Flame');
+        userList.innerHTML = '';
+
+        // Populate the user list with the data
+        querySnapshot.forEach((doc) => {
+          const user = doc.data();
+          const li = document.createElement('li');
+          if(user.Flame == '0'){
+           
+          li.innerText= "Safe-home";
+          
+          }else{
+            
+           
+          li.innerText= "Flame-home";
+         
+          
+          }
+          userList.appendChild(li);
+        });
+      });
+
+      const querym = usersRef.where('sound', '>=', 0);
+
+
+      querym.onSnapshot((querySnapshot) => {
+        // Clear the user list
+        const userList = document.getElementById('sound');
+        userList.innerHTML = '';
+
+        // Populate the user list with the data
+        querySnapshot.forEach((doc) => {
+          const user = doc.data();
+          const li = document.createElement('li');
+          li.innerHTML = `${user.sound} `;
+          userList.appendChild(li);
+
+        });
+        
+      });
+
+      const queryf = usersRef.where('PIR', '>=', 0);
+
+
+      queryf.onSnapshot((querySnapshot) => {
+        // Clear the user list
+        const userList = document.getElementById('PIR');
+        userList.innerHTML = '';
+
+        // Populate the user list with the data
+        querySnapshot.forEach((doc) => {
+          const user = doc.data();
+          const li = document.createElement('li');
+          if (user.PIR == '0') {
+            li.innerText= "Detection..";
+          }else{
+            li.innerText= "detected people outside";
+          }
+           userList.appendChild(li);
+         });
+       });
+      
+      
+    // You can perform other actions or operations with the text variable here
+
+
+
+
+
+</script>
+
+   
+    
+
+</body>
+
+
+
+
+<script>
+
+  function goToPage(url) {
+    window.location.href = url;
+  }
+  
+  
+  </script>
+
+
+<script>
+  function openPopup() {
+    document.getElementById("popup").style.display = "block";
+  }
+
+  function closePopup() {
+    document.getElementById("popup").style.display = "none";
+  }
+</script>
+
+</html>
+
+

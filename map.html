@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="display-farm.css">
+
+  <style>
+    /* Popup styles */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 9999;
+    }
+
+    .popup-content {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button onclick="openPopup()">Open Popup</button>
+
+  <!-- Popup -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <span class="close" onclick="closePopup()">&times;</span>
+      <h2>Popup Content</h2>
+
+      <CENTER><div class="card">
+        <div class="card-content">
+          <h3>water-pump</h3>
+          <img src="assets/irr.avif" alt="Image 1" >
+          <button class="button-55" onclick="updateFieldValue1()" id="go" role="button"> ON </button>
+          <button class="button-55" onclick="updateFieldValue2()" id="go" role="button"> OFF </button>
+  
+        </div>
+      </div></CENTER>
+
+      
+      <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+      <script>
+        // Initialize Firebase
+        const firebaseConfig = {
+        apiKey: "AIzaSyCf3FJXVeM1SDA8YWQWR1EOK8OzOwah3fQ",
+        authDomain: "smc-iot-ae076.firebaseapp.com",
+        projectId: "smc-iot-ae076",
+        storageBucket: "smc-iot-ae076.appspot.com",
+        messagingSenderId: "499857190819",
+        appId: "1:499857190819:web:b8d5e0125071db946b7416",
+        measurementId: "G-3FF6TKR841"
+      };
+        // Function to handle button click event
+        firebase.initializeApp(firebaseConfig);
+      
+        // Initialize Firestore
+        var db = firebase.firestore();
+      
+       
+        function updateFieldValue1() {
+          var collectionRef = db.collection("/users/87KdcdfQulP1sE14AXlTaTQHB8n1/field/Smart Farm/esp-nodes/esp-1/controlling");
+          var documentID = "pump-button";
+      
+          // Update the field value
+          collectionRef.doc(documentID).update({
+            "pump-button": Boolean(true)
+          })
+          .then(function() {
+            console.log("Field value updated successfully!");
+          })
+          .catch(function(error) {
+            console.error("Error updating field value: ", error);
+          });
+        }
+      
+        function updateFieldValue2() {
+          var collectionRef = db.collection("/users/87KdcdfQulP1sE14AXlTaTQHB8n1/field/Smart Farm/esp-nodes/esp-1/controlling");
+          var documentID = "pump-button";
+      
+          // Update the field value
+          collectionRef.doc(documentID).update({
+            "pump-button": Boolean(false)
+          })
+          .then(function() {
+            console.log("Field value updated successfully!");
+          })
+          .catch(function(error) {
+            console.error("Error updating field value: ", error);
+          });
+        }
+      
+      
+        
+      </script>
+
+      
+    </div>
+  </div>
+
+
+
+
+
+  <script>
+    function openPopup() {
+      document.getElementById("popup").style.display = "block";
+    }
+
+    function closePopup() {
+      document.getElementById("popup").style.display = "none";
+    }
+  </script>
+</body>
+</html>
