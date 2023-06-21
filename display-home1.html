@@ -237,9 +237,18 @@ const firebaseConfig = {
         querySnapshot.forEach((doc) => {
           const user = doc.data();
           const li = document.createElement('li');
-          li.innerHTML = `${user.sound} `;
-          userList.appendChild(li);
-
+          if(user.sound == '0'){
+           
+           li.innerText= "Sound : off";
+           
+           }else{
+             
+            
+           li.innerText= "Sound : Work";
+          
+           
+           }
+           userList.appendChild(li);
         });
         
       });
