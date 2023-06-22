@@ -76,7 +76,7 @@ margin: 10px 0;
     <div class="maint">
       <div class="card" style="width: 27%;">
        <CENTER> <div class="card-content">
-          <h3 style="font-size: 30px;">Blood Oxygen</h3>
+          <h3 style="font-size: 30px;">SpO2</h3>
           <img src="assets/bloodd.png" alt="Image 1" style="width: 150px;">
           <h3><ul id="blood"></ul></h3>
   
@@ -127,7 +127,7 @@ const firebaseConfig = {
         querySnapshot.forEach((doc) => {
           const user = doc.data();
           const li = document.createElement('li');
-          li.innerHTML = `${user.SpO2} `;
+          li.innerHTML = `${user.SpO2}% `;
           userList.appendChild(li);
         });
       });
@@ -142,7 +142,7 @@ const firebaseConfig = {
         querySnapshot.forEach((doc) => {
           const user = doc.data();
           const li = document.createElement('li');
-          li.innerHTML = `${user.HeartRate} `;
+          li.innerHTML = `${user.HeartRate} beats per minute `;
           userList.appendChild(li);
         });
       });

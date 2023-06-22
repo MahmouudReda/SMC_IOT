@@ -154,7 +154,7 @@ font-family: "JetBrains Mono",monospace;
         
       </div> 
     <div class="maint" style="margin-top: 8rem;">
-    <button class="button-30" onclick="goToPage('automation.html')" id="go" role="button"> <img src="assets/0c675a8e1061478d2b7b21b330093444.gif" style="height: auto; width: 50px;margin-right: 1rem; ">Automation</button>
+    <button class="button-30" onclick="goToPage('automation.html')" id="go" role="button"> <img src="assets/autoo.gif" style="height: auto; width: 30px;margin-right: 1rem; ">irregation</button>
   </div>
       
 
@@ -203,7 +203,7 @@ const firebaseConfig = {
         querySnapshot.forEach((doc) => {
           const user = doc.data();
           const li = document.createElement('li');
-          li.innerHTML = `${user.temp} `;
+          li.innerHTML = `${user.temp} °C`;
           userList.appendChild(li);
         });
       });
@@ -218,7 +218,7 @@ const firebaseConfig = {
         querySnapshot.forEach((doc) => {
           const user = doc.data();
           const li = document.createElement('li');
-          li.innerHTML = `${user.hum} `;
+          li.innerHTML = `${user.hum}% `;
           userList.appendChild(li);
         });
       });
@@ -235,11 +235,13 @@ const firebaseConfig = {
         querySnapshot.forEach((doc) => {
           const user = doc.data();
           const li = document.createElement('li');
-          li.innerHTML = `${user.moisturelevel} `;
+          li.innerHTML = `${user.moisturelevel}% `;
           userList.appendChild(li);
 
         
         });
+
+        
         
       });
       
@@ -281,7 +283,11 @@ const firebaseConfig = {
     document.getElementById("popup").style.display = "none";
   }
 </script>
-
+<script>
+  window.onload = function() {
+    alert("Normal Moisturelevel is under 70% , Begin irregation process if Moisturelevel over than 70%.");
+  };
+</script>
 </html>
 
 

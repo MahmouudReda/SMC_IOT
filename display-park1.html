@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="display-farm.css">
   <link rel = "icon" href = "assets/c3-removebg-preview.png"
         type = "image/x-icon">
-	<title>Monitoring SMC</title>
+	<title>Monitoring park</title>
 </head>
 <!-- Modal -->
 
@@ -25,7 +25,10 @@
   padding: 10px;
   margin-bottom: 10px;
 }
-
+.card-content h3 {
+  font-size: 18px;
+  margin-bottom: 0px;
+}
 .document-container h2 {
   margin-top: 0;
 }
@@ -36,6 +39,13 @@ font-size: 22px;
 color: red;
 }
 #p2 {
+list-style: none;
+padding: 0;
+font-size: 22px;
+
+color:red;
+}
+#sumAvail {
 list-style: none;
 padding: 0;
 font-size: 22px;
@@ -72,6 +82,8 @@ margin: 10px 0;
                 <img class="img" src="assets/c3-removebg-preview.png" style="height: auto; width: 150px;">
                 </a>
             </div>
+
+            
             
             <div id="menue">
                 <ul>
@@ -87,40 +99,51 @@ margin: 10px 0;
         </div>
 
     </nav>
+
+    <CENTER> <div class="maint" style="margin-top: 7rem; border: 1px solid #ccc;
+      border-radius: 5px; width: 20%; height: 50px; ">
+        <CENTER> <div class="card-content">
+          <h3><ul id="sumAvail"></ul></h3>
+        </div></CENTER>
+  
+      </div> </CENTER>
+
     <div class="maint">
-      <div class="card" style="width: 27%;">
+      <div class="card" style="width: 20%;">
        <CENTER> <div class="card-content">
           <h3 style="font-size: 30px;">Slots - 1</h3>
-          <img src="assets/park1.png" alt="Image 1" style="width: 150px;">
+          <img src="assets/park1.png" alt="Image 1" style="width: 130px;">
           <h3><ul id="p1"></ul></h3>
   
         </div> </CENTER>
       </div> 
   
-      <div class="card" style="width: 27%;">
+      <div class="card" style="width: 20%;">
        <CENTER> <div class="card-content">
         <h3 style="font-size: 30px;">Slots - 2</h3>
-        <img src="assets/park1.png" alt="Image 1" style="width: 150px;">
+        <img src="assets/park1.png" alt="Image 1" style="width: 130px;">
         <h3><ul id="p2"></ul></h3>
         </div></CENTER>
       </div>
 
-      <div class="card" style="width: 27%;">
+      <div class="card" style="width: 20%;">
         <CENTER> <div class="card-content">
          <h3 style="font-size: 30px;">Slots - 3</h3>
-         <img src="assets/park1.png" alt="Image 1" style="width: 150px;">
+         <img src="assets/park1.png" alt="Image 1" style="width: 130px;">
          <h3><ul id="p3"></ul></h3>
          </div></CENTER>
        </div>
 
-       <div class="card" style="width: 27%;">
+       <div class="card" style="width: 20%;">
         <CENTER> <div class="card-content">
          <h3 style="font-size: 30px;">Slots - 4</h3>
-         <img src="assets/park1.png" alt="Image 1" style="width: 150px;">
+         <img src="assets/park1.png" alt="Image 1" style="width: 130px;">
          <h3><ul id="p4"></ul></h3>
          </div></CENTER>
        </div>
     </div>
+   
+
 </body>
     
     
@@ -144,26 +167,27 @@ margin: 10px 0;
   
   // Get a reference to the document
   const documentRef = firebase.firestore().doc(documentPath);
-  ``
+  
   // Retrieve the document data
   documentRef.get().then((doc) => {
     if (doc.exists) {
       const documentData = doc.data();
       const fieldValues = Object.values(documentData);
    // Output the values of the fields
-  
+  var counter = 0;
    
    if(fieldValues[0] == '0'){
-    const userList = document.getElementById('p1');
+    const userList = document.getElementById('p4');
           userList.innerHTML = '';
           const user = doc.data();
   
             const li = document.createElement('li');
             li.innerText="Available-Slot";
             userList.appendChild(li);
+            counter++;
       }
     else {
-      const userList = document.getElementById('p1');
+      const userList = document.getElementById('p4');
           userList.innerHTML = '';
           const user = doc.data();
   
@@ -171,24 +195,7 @@ margin: 10px 0;
             li.innerText="unAvailable-Slot";
             userList.appendChild(li);
     }
-    if(fieldValues[0] == '0'){
-    const userList = document.getElementById('p2');
-          userList.innerHTML = '';
-          const user = doc.data();
-  
-            const li = document.createElement('li');
-            li.innerText="Available-Slot";
-            userList.appendChild(li);
-      }
-    else {
-      const userList = document.getElementById('p2');
-          userList.innerHTML = '';
-          const user = doc.data();
-  
-            const li = document.createElement('li');
-            li.innerText="unAvailable-Slot";
-            userList.appendChild(li);
-    }
+    
     if(fieldValues[1] == '0'){
     const userList = document.getElementById('p3');
           userList.innerHTML = '';
@@ -197,6 +204,7 @@ margin: 10px 0;
             const li = document.createElement('li');
             li.innerText="Available-Slot";
             userList.appendChild(li);
+            counter++;
       }
     else {
       const userList = document.getElementById('p3');
@@ -208,16 +216,17 @@ margin: 10px 0;
             userList.appendChild(li);
     }
     if(fieldValues[2] == '0'){
-    const userList = document.getElementById('p4');
+    const userList = document.getElementById('p2');
           userList.innerHTML = '';
           const user = doc.data();
   
             const li = document.createElement('li');
             li.innerText="Available-Slot";
             userList.appendChild(li);
+            counter++;
       }
     else {
-      const userList = document.getElementById('p4');
+      const userList = document.getElementById('p2');
           userList.innerHTML = '';
           const user = doc.data();
   
@@ -225,7 +234,44 @@ margin: 10px 0;
             li.innerText="unAvailable-Slot";
             userList.appendChild(li);
     }
+    if(fieldValues[3] == '0'){
+    const userList = document.getElementById('p1');
+          userList.innerHTML = '';
+          const user = doc.data();
   
+            const li = document.createElement('li');
+            li.innerText="Available-Slot";
+            userList.appendChild(li);
+            counter++;
+      }
+    else {
+      const userList = document.getElementById('p1');
+          userList.innerHTML = '';
+          const user = doc.data();
+  
+            const li = document.createElement('li');
+            li.innerText="unAvailable-Slot";
+            userList.appendChild(li);
+    }
+
+    if(counter==0){
+    const userList = document.getElementById('sumAvail');
+          userList.innerHTML = '';
+          const user = counter;
+  
+            const li = document.createElement('li');
+            li.innerText='no slots Available';
+            userList.appendChild(li);
+    }
+    else{
+      const userList = document.getElementById('sumAvail');
+          userList.innerHTML = '';
+          const user = counter;
+  
+            const li = document.createElement('li');
+            li.innerText=counter + " slots available";
+            userList.appendChild(li);
+    }
   
   }  
   });
